@@ -78,3 +78,6 @@ class TestWorkerPool(unittest.TestCase):
             assert False, "Something returned a result, even though we are"
             "expecting no workers."
         pool.shutdown()
+
+if __name__ == '__main__':
+    unittest.main()

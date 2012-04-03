@@ -53,3 +53,6 @@ class TestEquippedWorkers(unittest.TestCase):
             self.assertEquals(r, i)
 
         pool.shutdown()
+
+if __name__ == '__main__':
+    unittest.main()
