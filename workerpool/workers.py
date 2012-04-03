@@ -21,8 +21,8 @@ class Worker(Thread):
     """
 
     def __init__(self, jobs):
-        self.jobs = jobs
         Thread.__init__(self)
+        self.jobs = jobs
 
     def run(self):
         "Get jobs from the queue and perform them as they arrive."
@@ -34,7 +34,7 @@ class Worker(Thread):
             try:
                 job.run()
                 self.jobs.task_done()
-            except TerminationNotice:
+            except (KeyboardInterrupt, SystemExit, TerminationNotice):
                 self.jobs.task_done()
                 break
 
@@ -61,6 +61,6 @@ class EquippedWorker(Worker):
             try:
                 job.run(toolbox=self.toolbox)
                 self.jobs.task_done()
-            except TerminationNotice:
+            except (KeyboardInterrupt, SystemExit, TerminationNotice):
                 self.jobs.task_done()
                 break
