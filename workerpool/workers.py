@@ -23,6 +23,7 @@ class Worker(Thread):
     def __init__(self, jobs):
         Thread.__init__(self)
         self.jobs = jobs
+        self.daemon = True
 
     def run(self):
         "Get jobs from the queue and perform them as they arrive."
